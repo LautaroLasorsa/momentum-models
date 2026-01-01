@@ -16,11 +16,11 @@ The basic idea (at least what I understood) to motivate this experiment is that 
 
 My idea was to prove this over a dataset of random-generated in a regression task where the real weights were changing over time.
 
-Both the weights of the model and the real weights of the function ( $ y = w*x + noise, noise \sim N(0,2) $ ), have several levels of nested momentum. 
+Both the weights of the model and the real weights of the function ( $y = w \cdot x + \epsilon$, $\epsilon \sim N(0,2)$ ), have several levels of nested momentum. 
 
-The idea of each momentum level $ M_i $ is that $ M_m $is the gradient in the case of the model backward step, and a random variable in the case of the real weights change. Then, each $ M_i $ ($ i<m $) is updated to $ M_i' = \alpha * M_i + (1-\alpha) * M_{i+1} $, with $ \alpha = 0.95 $.
+The idea of each momentum level $M_i$ is that $M_m$ is the gradient in the case of the model backward step, and a random variable in the case of the real weights change. Then, each $M_i$ ($i < m$) is updated to $M_i' = \alpha \cdot M_i + (1-\alpha) \cdot M_{i+1}$, with $\alpha = 0.95$.
 
-The only difference between model and real weights is that the last step, in the real weights uses the same formula, while in the model it uses a normal gradient descend step $ w' = w - lr * M_0 $.
+The only difference between model and real weights is that the last step, in the real weights uses the same formula, while in the model it uses a normal gradient descend step $w' = w - lr \cdot M_0$.
 
 ## The hypothesis
 
